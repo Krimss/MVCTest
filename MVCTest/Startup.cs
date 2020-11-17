@@ -28,6 +28,8 @@ namespace MVCTest
             services.AddControllersWithViews();
             services.AddDbContext<AppDbContext>(options =>
                         options.UseSqlServer(Configuration["Data:SportStoreProducts:ConnectionString"]));
+            services.AddTransient<IGenericRepository<Customer>, EFGenericRepository<Customer>>();
+            services.AddTransient<IGenericRepository<Founder>, EFGenericRepository<Founder>>();
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -36,6 +38,8 @@ namespace MVCTest
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                app.UseBrowserLink();
+
             }
             else
             {
@@ -54,7 +58,14 @@ namespace MVCTest
             {
                 endpoints.MapControllerRoute(
                     name: "default",
-                    pattern: "{controller=Home}/{action=Index}/{id?}");
+                    pattern: "/",
+                    defaults: new { controller = "Home", Action = "Index" }
+                    );
+                endpoints.MapControllerRoute(
+                    name: "founders",
+                    pattern: "/founders",
+                    defaults: new { controller = "Founders", Action = "Index" }
+                    );
             });
         }
     }

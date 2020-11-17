@@ -11,7 +11,7 @@ namespace MVCTest.Models
         [Key]
         public int FounderKey { get; set; }
         [Required]
-        [RegularExpression(@"/^(\d{10}|\d{12})$/)", ErrorMessage = "Введите корректный ИНН")]
+        [RegularExpression(@"^(\d{10}|\d{12})$", ErrorMessage = "Введите корректный ИНН")]
         public string INN { get; set; }
         [Required]
         public string FIO { get; set; } 
