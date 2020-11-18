@@ -8,11 +8,12 @@
             <table class="table table-bordered">
                 <thead>
                     <tr>
-                        <th scope="col">#</th>
+                        <th scope="col">ID</th>
                         <th scope="col">ИНН</th>
                         <th scope="col">ФИО</th>
                         <th scope="col">Дата добавления</th>
                         <th scope="col">Дата обновления</th>
+                        <th scope="col">Изменить</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -24,6 +25,7 @@
                             <td class="edit">@m.FIO </td>
                             <td> @m.DateAdd </td>
                             <td> @m.DateUpdate </td>
+                            <td> <button class="btn btn-primary">Изменить</button> </td>
                         </tr>
 
                     }
@@ -31,45 +33,10 @@
             </table>
             <div class="row justify-content-end">
                 <div class="col"></div>
-                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-                    Добавить
-                </button>
 
-                <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog">
-                        <div class="modal-content">
-                            <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">Добавить основателя</h5>
-                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                </button>
-                            </div>
-                            <div class="modal-body">
-                                <form asp-action="addFounder" method="post">
-                                    <div class="form-group">
-                                        <label for="exampleInputEmail1">ИНН</label>
-                                        <input type="text" class="form-control" asp-for="FirstOrDefault().INN" id="exampleInputEmail1" />
-                                        <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="exampleInputPassword1">ФИО</label>
-                                        <input type="text" class="form-control" asp-for="FirstOrDefault().FIO" id="exampleInputPassword1">
-                                        <div class="invalid-feedback">
-                                            Looks good!
-                                        </div>
-                                    </div>
-
-                                    <button type="submit" class="btn btn-primary">Submit</button>
-                                </form>
-                            </div>
-                            <div class="modal-footer">
-                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                <button type="button" class="btn btn-primary">Save changes</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
+                   <a class="btn btn-primary" asp-route="AddFounder" >Добавить</a>
+                
+                
             </div>
 
         </div>

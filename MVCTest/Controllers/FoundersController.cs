@@ -16,15 +16,20 @@ namespace MVCTest.Controllers
         {
             return View(founderRepository.Get());
         }
+        public IActionResult AddFounder() {
+            return View( new Founder ());    
+        }
+
         [HttpPost]
-        public ViewResult addFounder(Founder f) {
+        public ViewResult AddFounder(Founder f) {
             f.DateAdd = DateTime.Now;
             f.DateUpdate = DateTime.Now;
             if (ModelState.IsValid) {
-                return View(founderRepository.Get());
+                founderRepository.Save(f);
+                return View("Added");
             }
             else
-                return View(founderRepository.Get());
+                return View();
 
         }
     }

@@ -66,6 +66,11 @@ namespace MVCTest
                     pattern: "/founders",
                     defaults: new { controller = "Founders", Action = "Index" }
                     );
+                endpoints.MapControllerRoute(
+                    name: "AddFounder",
+                    pattern: "/founders/Add",
+                    defaults: new { controller = "Founders", Action = "AddFounder" }
+                    );
             });
         }
     }
