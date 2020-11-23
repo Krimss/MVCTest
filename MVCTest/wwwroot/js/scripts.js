@@ -1,16 +1,19 @@
-$(document).ready(() => {
-    let edit = $('.edit');
-    //let e = document.createElement('input');
-    //e.type = 'text';
-    //e.className = 'form-control';
-    let e = $('<input>', {
-        'class': 'form-control',
-        'type':'text',
-    })
-    edit.dblclick(addEdit);
-   
-    function addEdit(ev) {
-        ev['target'].firstChild.replaceWith(e);
-    }
 
+$(document).ready(() => { 
+    let id = $("#id")[0].value;
+    let url = $('#url')[0].value;
+    let ret = {id: id}
+$.ajax({
+    url: url,
+    type: 'POST',
+    contentType: "application/json",
+    dataType:'json',
+    data: JSON.stringify(ret)
+}).done((d) => {
+    $.each(d, (i) => {
+        let selected = d[i]['isSelected'] ? "selected" : '';
+        $('#founders').append('<option '+selected+' value="' + d[i]['id']+'">' + d[i]['fio']+ '</option>')
+    });
+})
 });
+

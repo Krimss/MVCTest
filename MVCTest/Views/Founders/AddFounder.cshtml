@@ -1,19 +1,27 @@
-﻿@model Founder
+﻿@model GenericModelView<Founder>
 @{ Layout = "_Layout"; }
 @{ViewBag.Title = "Добавить основателя";}
 
 <div class="row justify-content-center">
-    <form method="post" asp-action="AddFounder" >
+    <input id="url" value="/customers/customers" type="hidden" />
+    <form method="post">
         <div class="form-group">
-            <label for="INN">INN</label>
-            <input type="text" class="form-control" asp-for="INN" id="INN">
-            <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small>
+            <div asp-validation-summary="All" class="text-danger"></div>
+            <input id="id" asp-for="Model.FounderID" value="@Model.Model.FounderID " type="hidden" />
+            <label for="INN">ИНН</label>
+            <input type="text" class="form-control" asp-for="Model.INN" id="INN">
         </div>
         <div class="form-group">
-            <label for="FIO">FIO</label>
-            <input type="text" class="form-control" id="FIO" asp-for="FIO">
+            <label for="FIO">ФИО</label>
+            <input type="text" class="form-control" id="FIO" asp-for="Model.FIO">
         </div>
-        <button type="submit" class="btn btn-primary">Submit</button>
+        <div class="form-group">
+            <label for="Founders">Основатели</label>
+            <select id="founders" class="custom-select" asp-for="BindId">
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Ок</button>
+
     </form>
 
 </div>

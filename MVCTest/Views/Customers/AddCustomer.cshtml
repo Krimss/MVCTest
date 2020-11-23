@@ -1,0 +1,37 @@
+﻿@model GenericModelView<Customer>;
+@{ Layout = "_Layout"; }
+@{ViewBag.Title = "Добавить пользователя";}
+
+<div class="row justify-content-center">
+    <input id="url" value="/founders/founders" type="hidden" />
+    <form method="post">
+        <div asp-validation-summary="All" class="text-danger"></div>
+        <input id="id" asp-for="@Model.Model.CustomerID" value="@Model.Model.CustomerID " type="hidden" />
+        <div class="form-group">
+            <label for="INN">INN</label>
+            <input type="text" class="form-control" asp-for="Model.INN" id="INN">
+        </div>
+        <div class="form-group">
+            <label for="name">Имя</label>
+            <input type="text" class="form-control" id="name" asp-for="Model.name">
+        </div>
+        <div class="form-group">
+            <label for="type">Тип</label>
+            <select class="custom-select" asp-for="Model.Type">
+                <option selected>Выберите тип клиента</option>
+                <option value="Индивидуальный предприниматель">Индивидуальный предприниматель</option>
+                <option value="Юридическое лицо">Юридическое лицо</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <select id="founders" class="custom-select" asp-for="BindId">
+                <option>Выберите основателя</option>
+
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+
+
+
+</div>

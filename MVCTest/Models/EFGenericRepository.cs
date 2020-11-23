@@ -14,15 +14,21 @@ namespace MVCTest.Models
         public EFGenericRepository(AppDbContext ctx)
         {
             context = ctx;
+      
             dbset = ctx.Set<TEntity>();
         }
-        public IQueryable<TEntity> Get() {
-            return dbset.AsNoTracking();
+        public IQueryable<TEntity> Get( ) {
+            var set=  dbset.AsNoTracking();
+            return set;
         }
         public TEntity GetById(int id) {
-            return dbset.Find(id);
+          
+            var e= dbset.Find(id);
+            
+            return e;
         }
         public void Save(TEntity entity) {
+          
             dbset.Add(entity);
             context.SaveChanges();
         }
